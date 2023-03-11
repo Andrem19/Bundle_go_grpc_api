@@ -7,8 +7,8 @@ CREATE TABLE "users" (
   "email_confirm" BOOLEAN NOT NULL DEFAULT 'false',
   "roles" TEXT[] DEFAULT '{"user", "seller"}',
   "hashed_password" varchar NOT NULL,
-  "account" bigserial,
-  "address" bigserial,
+  "account" bigserial NOT NULL,
+  "address" bigserial NOT NULL,
   "created_at" timestamptz NOT NULL DEFAULT (now())
 );
 

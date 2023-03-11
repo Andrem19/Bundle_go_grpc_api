@@ -16,6 +16,20 @@ func (server *Server) CreateUser(ctx context.Context, req *pb.CreateUserRequest)
 	if err != nil {
 		return nil, status.Errorf(codes.Unimplemented, "failed to hash password")
 	}
+	addr := db.CreateAddressParams{
+		City: "",
+		Line1: "",
+		Line2: "",
+		Postcode: "",
+	}
+	address, err := server.store.CreateAddress(ctx, addr)
+	if err != nil {
+		return nil, status.Errorf(codes.Unimplemented, "failed to create address")
+	}
+	account, err := server.store.CreateAccount(ctx, 0)
+	if err != nil {
+		return nil, status.Errorf(codes.Unimplemented, "failed to create account")
+	}
 
 	arg := db.CreateUserParams{
 		Username: req.GetUsername(),
@@ -24,6 +38,8 @@ func (server *Server) CreateUser(ctx context.Context, req *pb.CreateUserRequest)
 		Email: req.GetEmail(),
 		HashedPassword: hashedPassword,
 		Roles: req.GetRoles(),
+		Account: account.ID,
+		Address: address.ID,
 	}
 
 	user, err := server.store.CreateUser(ctx, arg)

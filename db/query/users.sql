@@ -5,9 +5,11 @@ INSERT INTO users (
   second_name,
   email,
   hashed_password,
-  roles
+  roles,
+  account,
+  address
   )VALUES (
-  $1, $2, $3, $4, $5, $6
+  $1, $2, $3, $4, $5, $6, $7, $8
 ) RETURNING *;
 
 -- name: GetUser :one

@@ -5,7 +5,6 @@
 package db
 
 import (
-	"database/sql"
 	"time"
 
 	"github.com/google/uuid"
@@ -36,15 +35,15 @@ type Session struct {
 }
 
 type User struct {
-	ID             int64         `json:"id"`
-	Username       string        `json:"username"`
-	FirstName      string        `json:"first_name"`
-	SecondName     string        `json:"second_name"`
-	Email          string        `json:"email"`
-	EmailConfirm   bool          `json:"email_confirm"`
-	Roles          []string      `json:"roles"`
-	HashedPassword string        `json:"hashed_password"`
-	Account        sql.NullInt64 `json:"account"`
-	Address        sql.NullInt64 `json:"address"`
-	CreatedAt      time.Time     `json:"created_at"`
+	ID             int64     `json:"id"`
+	Username       string    `json:"username"`
+	FirstName      string    `json:"first_name"`
+	SecondName     string    `json:"second_name"`
+	Email          string    `json:"email"`
+	EmailConfirm   bool      `json:"email_confirm"`
+	Roles          []string  `json:"roles"`
+	HashedPassword string    `json:"hashed_password"`
+	Account        int64     `json:"account"`
+	Address        int64     `json:"address"`
+	CreatedAt      time.Time `json:"created_at"`
 }
