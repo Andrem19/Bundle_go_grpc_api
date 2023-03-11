@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package pb;
+
+import "user.proto";
+
+option go_package = "github.com/Andrem19/bundle_go_grpc_api/pb";
+
+message CreateUserRequest {
+    string username = 1;
+    string first_name = 2;
+    string second_name = 4;
+    string email = 5;
+    string password = 6;
+    repeated string roles = 7;
+}
+
+message CreateUserRsponse {
+    User user =1;
+}

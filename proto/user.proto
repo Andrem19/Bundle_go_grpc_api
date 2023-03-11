@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/Andrem19/bundle_go_grpc_api/pb";
+
+message User {
+    string username = 1;
+    string email = 2;
+    string first_name = 3;
+    string second_name = 4;
+    repeated string roles = 5;
+    google.protobuf.Timestamp CreatedAt = 6;
+}
